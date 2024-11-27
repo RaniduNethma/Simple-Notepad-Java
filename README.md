@@ -13,7 +13,7 @@ A lightweight, customizable Notepad application built in Java using the Swing fr
 
 1. **Clone the Repository**:
    ```
-   git clone https://github.com/<YourGitHubUsername>/notepad-app.git
+   git clone https://github.com/RaniduNethma/Simple-Notepad-Java.git
    cd notepad-app
    ```
 
