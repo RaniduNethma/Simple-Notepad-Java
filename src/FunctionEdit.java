@@ -31,24 +31,6 @@ public class FunctionEdit {
     public void selectAll(){
     }
 
-    public void wordWrap(){
-
-        if (guiEdit.wordWrapOn == false){
-
-            guiEdit.wordWrapOn = true;
-            guiEdit.textArea.setLineWrap(true);
-            guiEdit.textArea.setWrapStyleWord(true);
-            guiEdit.itemWordWrap.setText("Word wrap: On");
-        }
-
-        else if (guiEdit.wordWrapOn == true) {
-            guiEdit.wordWrapOn = false;
-            guiEdit.textArea.setLineWrap(false);
-            guiEdit.textArea.setWrapStyleWord(false);
-            guiEdit.itemWordWrap.setText("Word wrap: Off");
-        }
-    }
-
     public void createFontFamily(String font){
 
         selectedFont = font;

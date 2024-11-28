@@ -11,7 +11,8 @@ public class GUI implements ActionListener {
     JMenuBar menuBar;
     JMenu menuFile, menuEdit, menuView;
     JMenuItem itemNew, itemOpen, itemSave, itemSaveAs, itemExit;
-    JMenuItem itemUndo, itemCut, itemCopy, itemPaste, itemDelete, itemFind, itemSelectAll, itemWordWrap;
+    JMenuItem itemUndo, itemCut, itemCopy, itemPaste, itemDelete, itemFind, itemSelectAll;
+    JMenuItem itemWordWrap;
     JMenuItem itemTimesNewRoman, itemArial, itemComicSans;
     JMenuItem itemRegular, itemItalic, itemBold, itemBoldItalic;
     JMenuItem item8, item9, item10, item11, item12, item14, item16, item18, item20,
@@ -20,6 +21,7 @@ public class GUI implements ActionListener {
     JMenu menuFontFamily, menuFontStyle, menuFontSize;
     FunctionFile file = new FunctionFile(this);
     FunctionEdit edit = new FunctionEdit(this);
+    FunctionView view = new FunctionView(this);
 
     public static void main(String[] args){
         new GUI();
@@ -32,11 +34,12 @@ public class GUI implements ActionListener {
         createMenuBar();
         createFileMenu();
         createEditMenu();
+        createViewMenu();
 
         edit.selectedFont = "arial";
         edit.selectedStyle = Font.PLAIN;
         edit.createFontsize(14);
-        edit.wordWrap();
+        view.wordWrap();
         window.setVisible(true);
         window.setLocation(300, 150);
     }
@@ -135,11 +138,6 @@ public class GUI implements ActionListener {
         itemSelectAll.addActionListener(this);
         itemSelectAll.setActionCommand("select all");
         menuEdit.add(itemSelectAll);
-
-        itemWordWrap = new JMenuItem("Word wrap: Off");
-        itemWordWrap.addActionListener(this);
-        itemWordWrap.setActionCommand("word wrap");
-        menuEdit.add(itemWordWrap);
 
         menuFont = new JMenu("Font");
         menuEdit.add(menuFont);
@@ -269,6 +267,14 @@ public class GUI implements ActionListener {
         menuFontSize.add(item72);
     }
 
+    public void createViewMenu(){
+
+        itemWordWrap = new JMenuItem("Word wrap: Off");
+        itemWordWrap.addActionListener(this);
+        itemWordWrap.setActionCommand("word wrap");
+        menuView.add(itemWordWrap);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -288,10 +294,6 @@ public class GUI implements ActionListener {
         }
         if (command.equals("exit")){
             file.exit();
-        }
-
-        if (command.equals("word wrap")){
-            edit.wordWrap();
         }
 
         if (command.equals("arial")){
@@ -364,6 +366,10 @@ public class GUI implements ActionListener {
         }
         if (command.equals("72")){
             edit.createFontsize(72);
+        }
+
+        if (command.equals("word wrap")){
+            view.wordWrap();
         }
     }
 }
